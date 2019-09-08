@@ -3,18 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-public class PlayerControls : NetworkBehaviour
+public class FixCamera : NetworkBehaviour
 {
-    public float movementSpeed;
-
     // Start is called before the first frame update
     void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
     {
         if (!isLocalPlayer)
         {
@@ -22,6 +14,9 @@ public class PlayerControls : NetworkBehaviour
             return;
         }
 
-        transform.Translate(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * movementSpeed * Time.deltaTime);
+        Camera.main.transform.position = transform.position - transform.forward * 10; // + transform.up * 3;
+        Camera.main.transform.LookAt(transform.position);
+        Camera.main.transform.parent = transform;
     }
+
 }
