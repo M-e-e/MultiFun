@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   syncMode: 0
-  syncInterval: 1
+  syncInterval: 0.01
   compressRotation: 1
 --- !u!114 &3530925507255576366
 MonoBehaviour:
