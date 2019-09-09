@@ -19,10 +19,12 @@ public class PlayerControls : NetworkBehaviour
 
     private bool jumpLock = false;
 
+    private Animator animator;
     private Rigidbody2D rb2d;
 
     private void Awake()
     {
+        animator = transform.GetChild(0).GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -68,6 +70,8 @@ public class PlayerControls : NetworkBehaviour
             {
                 rb2d.AddForce(Vector2.left * jumpStrength, ForceMode2D.Impulse);
             }
+
+            animator.SetTrigger("Jump");
 
             jumpLock = true;
         }
