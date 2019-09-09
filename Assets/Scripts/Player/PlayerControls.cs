@@ -17,21 +17,29 @@ public class PlayerControls : NetworkBehaviour
     private bool isWallLeft;
     private bool isWallRight;
 
+    private bool isFalling = false;
+    private bool isFlying = false;
+
     private bool jumpLock = false;
 
     private Animator animator;
     private Rigidbody2D rb2d;
+    private SpriteRenderer spriteRenderer;
+    private GameObject player_Graphics;
 
     private void Awake()
     {
-        animator = transform.GetChild(0).GetComponent<Animator>();
+        player_Graphics = transform.GetChild(0).gameObject;
+        animator = player_Graphics.GetComponent<Animator>();
+        spriteRenderer = player_Graphics.GetComponent<SpriteRenderer>();
         rb2d = GetComponent<Rigidbody2D>();
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -77,21 +85,39 @@ public class PlayerControls : NetworkBehaviour
         }
 
         //stick to wall
+        animator.SetBool("onWallRight", false);
+        animator.SetBool("onWallLeft", false);
+
         rb2d.gravityScale = 1.5f;
         if (!Input.GetKey(KeyCode.W))
         {
-            if (Input.GetKey(KeyCode.D) && isWallRight)
+            if (isWallRight)
             {
-                rb2d.velocity = Vector2.zero;
-                rb2d.gravityScale = 0;
+                animator.SetBool("onWallRight", true);
+                //spriteRenderer.flipX = false;
+                //player_Graphics.transform.position = new Vector2(.04f, player_Graphics.transform.position.y);
+                if (Input.GetKey(KeyCode.D))
+                {
+                    rb2d.velocity = Vector2.zero;
+                    rb2d.gravityScale = 0;
+
+                }
             }
-            if (Input.GetKey(KeyCode.A) && isWallLeft)
+            if (isWallLeft)
             {
-                rb2d.velocity = Vector2.zero;
-                rb2d.gravityScale = 0;
+                animator.SetBool("onWallLeft", true);
+                //spriteRenderer.flipX = true;
+                //player_Graphics.transform.position = new Vector2(-.04f, player_Graphics.transform.position.y);
+                if (Input.GetKey(KeyCode.A))
+                {
+                    rb2d.velocity = Vector2.zero;
+                    rb2d.gravityScale = 0;
+
+                }
             }
+
         }
-        
+
         isGrounded = false;
         isWallLeft = false;
         isWallRight = false;
@@ -134,7 +160,16 @@ public class PlayerControls : NetworkBehaviour
             }
         }
 
-        
+        //handle jump animation
+        if (rb2d.velocity.y > 0 && !animator.GetBool("Flying"))
+        {
+            animator.SetBool("Flying", true);
+        }
+        if (rb2d.velocity.y < 0 && !animator.GetBool("Falling"))
+        {
+            animator.SetBool("Falling", true);
+            animator.SetBool("Flying", false);
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -143,8 +178,12 @@ public class PlayerControls : NetworkBehaviour
         if (rb2d.velocity.y <= 0)
         {
             jumpLock = false;
+            animator.SetBool("Falling", false);
         }
 
 
     }
+
+    
+    
 }
