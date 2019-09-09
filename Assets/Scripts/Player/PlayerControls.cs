@@ -84,6 +84,17 @@ public class PlayerControls : NetworkBehaviour
             jumpLock = true;
         }
 
+        //handle jump animation
+        if (rb2d.velocity.y > 0 && !animator.GetBool("Flying"))
+        {
+            animator.SetBool("Flying", true);
+        }
+        if (rb2d.velocity.y < 0 && !animator.GetBool("Falling"))
+        {
+            animator.SetBool("Falling", true);
+            animator.SetBool("Flying", false);
+        }
+
         //stick to wall
         animator.SetBool("onWallRight", false);
         animator.SetBool("onWallLeft", false);
@@ -160,16 +171,7 @@ public class PlayerControls : NetworkBehaviour
             }
         }
 
-        //handle jump animation
-        if (rb2d.velocity.y > 0 && !animator.GetBool("Flying"))
-        {
-            animator.SetBool("Flying", true);
-        }
-        if (rb2d.velocity.y < 0 && !animator.GetBool("Falling"))
-        {
-            animator.SetBool("Falling", true);
-            animator.SetBool("Flying", false);
-        }
+        
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -179,9 +181,10 @@ public class PlayerControls : NetworkBehaviour
         {
             jumpLock = false;
             animator.SetBool("Falling", false);
+            
         }
 
-
+        
     }
 
     
