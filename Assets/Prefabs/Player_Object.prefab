@@ -122,7 +122,7 @@ MonoBehaviour:
   maxSpeed: 8
   jumpStrength: 8
   raycastGroundedDistance: 0.5
-  raycastWallDistance: 0.93
+  raycastWallDistance: 0.935
   raycastLayer:
     serializedVersion: 2
     m_Bits: 32768
