@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Game/_Scenes/Archive/Sebas.unity
-    guid: 487ad7ae55474944b93904dbe3d21b8c
-  - enabled: 1
-    path: Assets/_Game/_Scenes/Archive/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/_Game/_Scenes/Play_Test.unity
+    guid: 9d0abe7b2712b7d48b10c03afca6a978
   m_configObjects: {}

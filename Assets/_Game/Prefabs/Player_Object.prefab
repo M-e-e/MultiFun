@@ -115,8 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c3d3ab43eab464ab236c1b22106620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
 --- !u!1 &6579676861585633575
 GameObject:
   m_ObjectHideFlags: 0
@@ -131,6 +129,7 @@ GameObject:
   - component: {fileID: 6579676861585633570}
   - component: {fileID: 346378957802979094}
   - component: {fileID: 376314137627089495}
+  - component: {fileID: 2613063605385998771}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -146,7 +145,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6579676861585633575}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
+  m_LocalPosition: {x: 0, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6579676861683343448}
@@ -221,7 +220,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!232 &6579676861585633570
 DistanceJoint2D:
   m_ObjectHideFlags: 0
@@ -238,8 +237,8 @@ DistanceJoint2D:
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 1
-  m_Distance: 4
+  m_AutoConfigureDistance: 0
+  m_Distance: 1.3633499
   m_MaxDistanceOnly: 0
 --- !u!114 &346378957802979094
 MonoBehaviour:
@@ -255,7 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serverOnly: 0
   localPlayerAuthority: 0
-  m_AssetId: fbb6befe10e015643bae25eb9b28582b
+  m_AssetId: ef7849d878df0a64a9cfcc90e691c80b
   m_SceneId: 0
 --- !u!114 &376314137627089495
 MonoBehaviour:
@@ -269,8 +268,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49a4030e35b6ac4da8a54969dd9b865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
+--- !u!61 &2613063605385998771
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6579676861585633575}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &6579676861683343455
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,8 +320,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6579676861683343455}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.81833, z: 0}
+  m_LocalScale: {x: 0.45445, y: 0.45445, z: 0.45445}
   m_Children:
   - {fileID: 6579676861585633569}
   - {fileID: 6579676861049106071}
@@ -319,7 +342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serverOnly: 0
   localPlayerAuthority: 1
-  m_AssetId: fbb6befe10e015643bae25eb9b28582b
+  m_AssetId: ef7849d878df0a64a9cfcc90e691c80b
   m_SceneId: 0
 --- !u!114 &7967914589750806559
 MonoBehaviour:

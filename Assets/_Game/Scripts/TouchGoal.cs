@@ -7,6 +7,6 @@ public class TouchGoal : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D ObjectInGoal)
     {
-        Debug.Log("Level Finished by " + ObjectInGoal);
+        Debug.Log("Level Finished by " + ObjectInGoal.gameObject.name);
     }
 }
